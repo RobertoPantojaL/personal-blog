@@ -84,7 +84,7 @@ Puedes ver una demostración en vivo de este proyecto en [https://test.nexwey.on
     ```
 
 
-3. Abre tu navegador y visita `http://localhost:5173` on en la dirección que te proporcione vite para ver la aplicación.
+3. Abre tu navegador y visita `http://localhost:5173` o en la dirección que te proporcione vite para ver la aplicación.
 
 
 ## Estructura del Proyecto
