@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../config/axios';
+import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -11,7 +11,7 @@ function ArticleDetail() {
 
   useEffect(() => {
     fetchArticle();
-  }, []); // Removed unnecessary dependency 'id'
+  }, [id]);
 
   const fetchArticle = async () => {
     try {
@@ -25,7 +25,7 @@ function ArticleDetail() {
   const handleDelete = async () => {
     try {
       await axios.delete(`/api/articles/${id}`);
-      navigate('/blog/sup');
+      navigate('/sup');
     } catch (error) {
       console.error('Error deleting article:', error);
     }
@@ -45,9 +45,9 @@ function ArticleDetail() {
         <p>{article.content}</p>
       </div>
       <div className="button-group">
-        <Link to={`/blog/edit/${id}`} className="btn"> <i className="fas fa-pencil-alt"></i> Edit</Link>
+        <Link to={`/edit/${id}`} className="btn"> <i className="fas fa-pencil-alt"></i> Edit</Link>
         <Link to="#" className="btn" onClick={handleDelete}>Delete</Link>
-        <Link to="/blog/sup" className="btn">Back to List</Link>
+        <Link to="/sup" className="btn">Back to List</Link>
       </div>
     </motion.div>
   );

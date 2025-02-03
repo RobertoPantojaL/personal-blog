@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../config/axios';
+import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -33,7 +33,7 @@ function ArticleForm() {
       } else {
         await axios.post('/api/articles', { title, content });
       }
-      navigate('/blog/sup');
+      navigate('/sup');
     } catch (error) {
       console.error('Error submitting article:', error);
     }
@@ -68,7 +68,7 @@ function ArticleForm() {
           />
         </div>
         <button type="submit" className="btn">{id ? 'Update' : 'Create'} Article</button>
-        <Link to="/blog/sup" className="btn" style={{marginLeft: '10px'}}>Cancel</Link>
+        <Link to="/sup" className="btn" style={{marginLeft: '10px'}}>Cancel</Link>
       </form>
     </motion.div>
   );

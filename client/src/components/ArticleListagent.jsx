@@ -36,7 +36,7 @@ function ArticleList() {
           >
             <h2>{article.title}</h2>
             <p>{article.content.substring(0, 100)}...</p>
-            <Link to={`/blog/articleagent/${article.id}`} className="btn">Read More</Link>
+            <Link to={`/articleagent/${article.id}`} className="btn">Read More</Link>
           </motion.div>
         ))}
       </div>

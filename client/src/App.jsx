@@ -12,23 +12,23 @@ function App() {
     <div className="App">
       <nav>
         <div className="container">
-          <Link to="/blog/sup" className="nav-link">Home</Link>
+          <Link to="/" className="nav-link">Home</Link>
         </div>
       </nav>
       <div className="container">
         <h1>Vistas Disponibles</h1>
         <ul>
-          <li className='view'><Link to="/blog/sup">Autor</Link></li>
-          <li className='view'><Link to="/blog/agent">Visitante</Link></li>
+          <li className='view'><Link to="/sup">Supervisor</Link></li>
+          <li className='view'><Link to="/agent">visitante</Link></li>
         </ul>
       </div>
       <Routes>
-        <Route path="/blog/sup" element={<ArticleList />} />
-        <Route path="/blog/agent" element={<ArticleListagent />} />
-        <Route path="/blog/new" element={<ArticleForm />} />
-        <Route path="/blog/edit/:id" element={<ArticleForm />} />
-        <Route path="/blog/article/:id" element={<ArticleDetail />} />
-        <Route path="/blog/articleagent/:id" element={<ArticleDetailagent />} />
+        <Route path="/sup" element={<ArticleList />} />
+        <Route path="/agent" element={<ArticleListagent />} />
+        <Route path="/new" element={<ArticleForm />} />
+        <Route path="/edit/:id" element={<ArticleForm />} />
+        <Route path="/article/:id" element={<ArticleDetail />} />
+        <Route path="/articleagent/:id" element={<ArticleDetailagent />} />
       </Routes>
     </div>
   );

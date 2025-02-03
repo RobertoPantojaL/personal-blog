@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../config/axios';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -24,7 +24,7 @@ function ArticleList() {
       <h1>Articles</h1>
       
 
-      <Link to="/blog/new" className="btn">New Article</Link>
+      <Link to="/new" className="btn">New Article</Link>
         <br />
         <small>aqui permite lectura, edición y creación de articulos</small>
         <br />
@@ -39,7 +39,7 @@ function ArticleList() {
           >
             <h2>{article.title}</h2>
             <p>{article.content.substring(0, 100)}...</p>
-            <Link to={`/blog/article/${article.id}`} className="btn">Read More</Link>
+            <Link to={`/article/${article.id}`} className="btn">Read More</Link>
           </motion.div>
         ))}
       </div>

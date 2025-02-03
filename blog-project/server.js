@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -7,25 +5,27 @@ require('dotenv').config();
 
 const app = express();
 
-// Configurar CORS para permitir cualquier origen
 app.use(cors());
-
 app.use(express.json());
 
-// Configuración del pool de conexiones
-const pool = mysql.createPool({
+const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: "Q~Z#PZbNz]4",
+  password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
 });
 
-// Rutas API
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database.');
+});
+
+// Get all articles
 app.get('/api/articles', (req, res) => {
-  pool.query('SELECT * FROM articles', (err, results) => {
+  db.query('SELECT * FROM articles', (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -34,8 +34,9 @@ app.get('/api/articles', (req, res) => {
   });
 });
 
+// Get a single article
 app.get('/api/articles/:id', (req, res) => {
-  pool.query('SELECT * FROM articles WHERE id = ?', [req.params.id], (err, results) => {
+  db.query('SELECT * FROM articles WHERE id = ?', [req.params.id], (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -48,9 +49,10 @@ app.get('/api/articles/:id', (req, res) => {
   });
 });
 
+// Create a new article
 app.post('/api/articles', (req, res) => {
   const { title, content } = req.body;
-  pool.query('INSERT INTO articles (title, content) VALUES (?, ?)', [title, content], (err, result) => {
+  db.query('INSERT INTO articles (title, content) VALUES (?, ?)', [title, content], (err, result) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -59,9 +61,10 @@ app.post('/api/articles', (req, res) => {
   });
 });
 
+// Update an article
 app.put('/api/articles/:id', (req, res) => {
   const { title, content } = req.body;
-  pool.query('UPDATE articles SET title = ?, content = ? WHERE id = ?', [title, content, req.params.id], (err) => {
+  db.query('UPDATE articles SET title = ?, content = ? WHERE id = ?', [title, content, req.params.id], (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -70,8 +73,9 @@ app.put('/api/articles/:id', (req, res) => {
   });
 });
 
+// Delete an article
 app.delete('/api/articles/:id', (req, res) => {
-  pool.query('DELETE FROM articles WHERE id = ?', [req.params.id], (err) => {
+  db.query('DELETE FROM articles WHERE id = ?', [req.params.id], (err) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
