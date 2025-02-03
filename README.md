@@ -25,13 +25,13 @@ Este proyecto es un sistema de gestión de contenido (CMS) simple para un blog p
 
 ## Demo en Línea
 
-Puedes ver una demostración en vivo de este proyecto en [https://mi-blog-personal.netlify.app](https://mi-blog-personal.netlify.app)
+Puedes ver una demostración en vivo de este proyecto en [https://test.nexwey.online/blog/](https://test.nexwey.online/blog/)
 
 ## Instalación
 
 1. Clona este repositorio:
     ```
-    git clone [https://github.com/tu-usuario/blog-personal.git](https://github.com/tu-usuario/blog-personal.git)
+    git clone https://github.com/RobertoPantojaL/personal-blog.git
     ```
 
 2. Navega al directorio del proyecto:
@@ -84,7 +84,7 @@ Puedes ver una demostración en vivo de este proyecto en [https://mi-blog-person
     ```
 
 
-3. Abre tu navegador y visita `http://localhost:5173` para ver la aplicación.
+3. Abre tu navegador y visita `http://localhost:5173` on en la dirección que te proporcione vite para ver la aplicación.
 
 
 ## Estructura del Proyecto
